@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the log file
-LOG_FILE="/tmp/homebrew_install.log"
+LOG_FILE="/var/log/homebrew_install.log"
 
 # Function to log messages
 log_message() {
