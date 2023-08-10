@@ -16,7 +16,7 @@ else
 fi
 
 # Check if Homebrew is installed
-if ! command -v brew &> /dev/null; then
+if ! command -v brew; then
     log_message "Installing Homebrew..."
 
     # Install Homebrew
@@ -36,7 +36,6 @@ packages=(
     "adobe-creative-cloud"
     "adobe-acrobat-pro"
     "google-chrome"
-    "logmein-client"
     "microsoft-auto-update"
     "intune-company-portal"
     "microsoft-office-businesspro"
@@ -47,7 +46,7 @@ packages=(
 for package in "${packages[@]}"; do
     log_message "Installing $package..."
     brew list "$package" || brew install cask "$package"
-    if brew install --cask "$package" &> "$LOG_FILE"; then
+    if brew install --cask "$package"; then
         log_message "$package successfully installed!"
     else
         log_message "Failed to install $package. Check $LOG_FILE for more details."
